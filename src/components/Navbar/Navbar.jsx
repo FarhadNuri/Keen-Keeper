@@ -1,23 +1,84 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router";
+
+const navItems = [
+  {
+    label: "Home",
+    path: "/",
+    iconClass: "fa-regular fa-house",
+  },
+  {
+    label: "Timeline",
+    path: "/timeline",
+    iconClass: "fa-regular fa-clock",
+  },
+  {
+    label: "Stats",
+    path: "/stats",
+    iconClass: "fa-solid fa-chart-line",
+  },
+];
+
 function Navbar() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
-    <div className="flex items-center justify-between bg-white h-16 border-b-2 border-gray-200">
-      <h1 className="pl-15 font-bold text-3xl">
-        Keen<span className="text-[#244D3F]">Keeper</span>
-      </h1>
-      <div className="flex gap-4 pr-15 font-semibold text-xl">
-        <Link to="/">
-          <i class="fa-regular fa-house"></i> Home
-        </Link>
-        <Link to="/">
-          <i class="fa-regular fa-clock"></i> Timeline
-        </Link>
-        <Link to="/">
-          <i class="fa-solid fa-chart-line"></i> Stats
-        </Link>
+    <header className="border-b border-gray-200 bg-white">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
+        <h1 className="text-2xl font-bold text-gray-800">
+          Keen<span className="text-[#244D3F]">Keeper</span>
+        </h1>
+
+        <button
+          type="button"
+          className="rounded-md p-2 text-gray-700 hover:bg-white sm:hidden"
+          onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+          aria-label="Toggle menu"
+          aria-expanded={isMobileMenuOpen}
+        >
+          <i className={isMobileMenuOpen ? "fa-solid fa-xmark" : "fa-solid fa-bars"}></i>
+        </button>
+
+        <nav className="hidden items-center gap-2 text-sm font-medium sm:flex">
+          {navItems.map((item, index) => (
+            <Link
+              key={item.label}
+              to={item.path}
+              className={`flex items-center gap-2 rounded-md px-3 py-2 ${
+                index === 0
+                  ? "bg-[#244D3F] text-white"
+                  : "text-gray-600 hover:bg-white hover:text-gray-900"
+              }`}
+            >
+              <i className={item.iconClass}></i>
+              <span>{item.label}</span>
+            </Link>
+          ))}
+        </nav>
       </div>
-    </div>
+
+      {isMobileMenuOpen && (
+        <nav className="border-t border-gray-200 px-4 pb-4 pt-3 sm:hidden">
+          <div className="flex flex-col gap-2 text-sm font-medium">
+            {navItems.map((item, index) => (
+              <Link
+                key={item.label}
+                to={item.path}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className={`flex items-center gap-2 rounded-md px-3 py-2 ${
+                  index === 0
+                    ? "bg-[#244D3F] text-white"
+                    : "text-gray-700 hover:bg-white hover:text-gray-900"
+                }`}
+              >
+                <i className={item.iconClass}></i>
+                <span>{item.label}</span>
+              </Link>
+            ))}
+          </div>
+        </nav>
+      )}
+    </header>
   );
 }
 

@@ -2,7 +2,7 @@ import React, { use } from "react";
 import { DataContext } from "./HomeDataContext";
 
 function HomeBannerGrid() {
-  const userData = use(DataContext) || [];
+  const userData = use(DataContext);
 
   const countOnTrack = userData.filter((user) => user?.status === "on_track").length;
   const needAttention = userData.filter((user) => user?.status === "overdue").length;

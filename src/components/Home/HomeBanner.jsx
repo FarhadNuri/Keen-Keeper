@@ -1,5 +1,6 @@
 import React from "react";
 import HomeBannerGrid from "./HomeBannerGrid";
+import HomeCard from "./HomeCard";
 
 function HomeBanner() {
   return (
@@ -25,6 +26,8 @@ function HomeBanner() {
         <div className="mt-8 sm:mt-10">
           <HomeBannerGrid />
         </div>
+
+        <HomeCard />
       </div>
     </section>
   );

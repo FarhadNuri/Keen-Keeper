@@ -1,4 +1,5 @@
 import React from 'react'
+import { useEffect } from 'react'
 import Navbar from '../Navbar/Navbar'
 import Footer from '../Footer/Footer'
 import { Outlet } from 'react-router'
@@ -9,6 +10,11 @@ import axios from 'axios'
 const userPromise = axios.get("userData.json")
 
 function Root() {
+  // Clear localStorage on page refresh
+  useEffect(() => {
+    localStorage.removeItem('timelineInteractions')
+  }, [])
+
   return (
     <div>
       <Navbar />

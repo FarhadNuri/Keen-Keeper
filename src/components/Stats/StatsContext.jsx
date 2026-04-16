@@ -7,28 +7,48 @@ export const StatsContext = createContext();
 
 function StatsContextProvider({ children }) {
   const [users, setUsers] = useState([]);
+  const [interactions, setInteractions] = useState([]);
 
+  // Fetch users data
   useEffect(() => {
     fetch('/userData.json')
       .then(res => res.json())
       .then(data => setUsers(data));
   }, []);
 
-  // Calculate stats from users data
+  // Fetch interactions from localStorage
+  useEffect(() => {
+    const savedInteractions = localStorage.getItem('timelineInteractions');
+    if (savedInteractions) {
+      setInteractions(JSON.parse(savedInteractions));
+    }
+  }, []);
+
+  // Calculate stats from actual interactions data
   const getInteractionStats = () => {
-    // Count interactions by type (simulating text, call, video)
-    // For demo purposes, we'll create sample data based on user count
-    const totalUsers = users.length;
+    if (interactions.length === 0) {
+      return [
+        { name: 'Text', value: 0, color: '#8B5CF6' },
+        { name: 'Call', value: 0, color: '#2F5D4E' },
+        { name: 'Video', value: 0, color: '#10B981' }
+      ];
+    }
+
+    // Count each interaction type
+    const textCount = interactions.filter(item => item.type === 'Text').length;
+    const callCount = interactions.filter(item => item.type === 'Call').length;
+    const videoCount = interactions.filter(item => item.type === 'Video').length;
     
     return [
-      { name: 'Text', value: Math.floor(totalUsers * 0.4), color: '#8B5CF6' },
-      { name: 'Call', value: Math.floor(totalUsers * 0.35), color: '#2F5D4E' },
-      { name: 'Video', value: Math.floor(totalUsers * 0.25), color: '#10B981' }
+      { name: 'Text', value: textCount, color: '#8B5CF6' },
+      { name: 'Call', value: callCount, color: '#2F5D4E' },
+      { name: 'Video', value: videoCount, color: '#10B981' }
     ];
   };
 
   const value = {
     users,
+    interactions,
     interactionStats: getInteractionStats()
   };
 

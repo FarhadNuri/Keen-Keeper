@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router'
 import Root from './components/Root/Root'
 import Home from './components/Home/Home'
 import CardDetailsTree from './components/CardDetailsPage/CardDetailsTree'
+import TimelineTree from './components/Timeline/TimelineTree'
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
       {
         path: "user/:userId",
         Component: CardDetailsTree
+      },
+      {
+        path: "timeline",
+        Component: TimelineTree
       }
     ]
   }

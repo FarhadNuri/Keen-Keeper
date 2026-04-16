@@ -8,7 +8,6 @@ function StatsCard() {
   const { interactionStats: initialStats } = useContext(StatsContext);
   const [stats, setStats] = useState(initialStats);
 
-  // Update stats when localStorage changes
   useEffect(() => {
     const updateStats = () => {
       const savedInteractions = localStorage.getItem('timelineInteractions');
@@ -25,7 +24,6 @@ function StatsCard() {
           { name: 'Video', value: videoCount, color: '#10B981' }
         ]);
       } else {
-        // No data yet
         setStats([
           { name: 'Text', value: 0, color: '#8B5CF6' },
           { name: 'Call', value: 0, color: '#2F5D4E' },
@@ -36,9 +34,7 @@ function StatsCard() {
 
     updateStats();
 
-    // Listen for custom event when interactions are updated
     window.addEventListener('interactionsUpdated', updateStats);
-    // Listen for storage changes
     window.addEventListener('storage', updateStats);
     
     return () => {

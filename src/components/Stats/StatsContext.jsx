@@ -9,14 +9,13 @@ function StatsContextProvider({ children }) {
   const [users, setUsers] = useState([]);
   const [interactions, setInteractions] = useState([]);
 
-  // Fetch users data
+
   useEffect(() => {
     fetch('/userData.json')
       .then(res => res.json())
       .then(data => setUsers(data));
   }, []);
 
-  // Fetch interactions from localStorage
   useEffect(() => {
     const savedInteractions = localStorage.getItem('timelineInteractions');
     if (savedInteractions) {
@@ -24,7 +23,6 @@ function StatsContextProvider({ children }) {
     }
   }, []);
 
-  // Calculate stats from actual interactions data
   const getInteractionStats = () => {
     if (interactions.length === 0) {
       return [
@@ -34,7 +32,7 @@ function StatsContextProvider({ children }) {
       ];
     }
 
-    // Count each interaction type
+
     const textCount = interactions.filter(item => item.type === 'Text').length;
     const callCount = interactions.filter(item => item.type === 'Call').length;
     const videoCount = interactions.filter(item => item.type === 'Video').length;

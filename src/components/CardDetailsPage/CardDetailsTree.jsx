@@ -5,6 +5,8 @@ import { DataContext } from '../Home/HomeDataContext'
 import Profile from './Profile'
 import TopGrid from './TopGrid'
 import RelationshipGoal from './RelationshipGoal'
+import CheckIn from './CheckIn'
+import Recent from './Recent'
 
 function CardDetailsTree() {
     const { userId } = useParams()
@@ -25,6 +27,8 @@ function CardDetailsTree() {
                 <div className="lg:col-span-2 space-y-6">
                     <TopGrid user={user} />
                     <RelationshipGoal user={user} />
+                    <CheckIn />
+                    <Recent />
                 </div>
             </div>
         </div>

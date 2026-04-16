@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 
 const navItems = [
   {
@@ -21,6 +21,15 @@ const navItems = [
 
 function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+
+  // Check if the current path matches the nav item path
+  const isActive = (path) => {
+    if (path === "/") {
+      return location.pathname === "/";
+    }
+    return location.pathname.startsWith(path);
+  };
 
   return (
     <header className="border-b border-gray-200 bg-white">
@@ -40,14 +49,14 @@ function Navbar() {
         </button>
 
         <nav className="hidden items-center gap-2 text-sm font-medium sm:flex">
-          {navItems.map((item, index) => (
+          {navItems.map((item) => (
             <Link
               key={item.label}
               to={item.path}
               className={`flex items-center gap-2 rounded-md px-3 py-2 ${
-                index === 0
+                isActive(item.path)
                   ? "bg-[#244D3F] text-white"
-                  : "text-gray-600 hover:bg-white hover:text-gray-900"
+                  : "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
               }`}
             >
               <i className={item.iconClass}></i>
@@ -60,15 +69,15 @@ function Navbar() {
       {isMobileMenuOpen && (
         <nav className="border-t border-gray-200 px-4 pb-4 pt-3 sm:hidden">
           <div className="flex flex-col gap-2 text-sm font-medium">
-            {navItems.map((item, index) => (
+            {navItems.map((item) => (
               <Link
                 key={item.label}
                 to={item.path}
                 onClick={() => setIsMobileMenuOpen(false)}
                 className={`flex items-center gap-2 rounded-md px-3 py-2 ${
-                  index === 0
+                  isActive(item.path)
                     ? "bg-[#244D3F] text-white"
-                    : "text-gray-700 hover:bg-white hover:text-gray-900"
+                    : "text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                 }`}
               >
                 <i className={item.iconClass}></i>

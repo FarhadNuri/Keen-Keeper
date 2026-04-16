@@ -6,6 +6,7 @@ import Root from './components/Root/Root'
 import Home from './components/Home/Home'
 import CardDetailsTree from './components/CardDetailsPage/CardDetailsTree'
 import TimelineTree from './components/Timeline/TimelineTree'
+import StatsTree from './components/Stats/StatsTree'
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: "timeline",
         Component: TimelineTree
+      },
+      {
+        path: "stats",
+        Component: StatsTree
       }
     ]
   }

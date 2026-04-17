@@ -33,9 +33,12 @@ function Navbar() {
   return (
     <header className="border-b border-gray-200 bg-white">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
-        <h1 className="text-2xl font-bold text-gray-800">
+        <Link 
+          to="/" 
+          className="text-2xl font-bold text-gray-800 hover:opacity-80 transition-opacity cursor-pointer"
+        >
           Keen<span className="text-[#244D3F]">Keeper</span>
-        </h1>
+        </Link>
 
         <button
           type="button"

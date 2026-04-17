@@ -7,6 +7,7 @@ import Home from './components/Home/Home'
 import CardDetailsTree from './components/CardDetailsPage/CardDetailsTree'
 import TimelineTree from './components/Timeline/TimelineTree'
 import StatsTree from './components/Stats/StatsTree'
+import ErrorPage from './components/ErrorPage/ErrorPage'
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: "stats",
         Component: StatsTree
+      },
+      {
+        path: "*",
+        Component: ErrorPage
       }
     ]
   }

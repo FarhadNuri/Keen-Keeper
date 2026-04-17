@@ -1,16 +1,19 @@
 import React from 'react'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { useParams } from 'react-router'
 import { DataContext } from '../Home/HomeDataContext'
 import Profile from './Profile'
 import TopGrid from './TopGrid'
 import RelationshipGoal from './RelationshipGoal'
 import CheckIn from './CheckIn'
-import Recent from './Recent'
+
 
 function CardDetailsTree() {
     const { userId } = useParams()
     const users = useContext(DataContext)
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [userId])
 
     const user = users.find(u => u.id === parseInt(userId))
 
@@ -28,7 +31,6 @@ function CardDetailsTree() {
                     <TopGrid user={user} />
                     <RelationshipGoal user={user} />
                     <CheckIn />
-                    <Recent />
                 </div>
             </div>
         </div>

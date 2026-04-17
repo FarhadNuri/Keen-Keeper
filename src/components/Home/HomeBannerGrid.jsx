@@ -6,13 +6,10 @@ function HomeBannerGrid() {
   const userData = use(DataContext);
   const { interactions } = useContext(TimelineContext);
   const [interactionCount, setInteractionCount] = useState(interactions.length);
-
-  // Update interaction count when interactions change
   useEffect(() => {
     setInteractionCount(interactions.length);
   }, [interactions]);
 
-  // Also listen for custom event
   useEffect(() => {
     const updateCount = () => {
       const savedInteractions = localStorage.getItem('timelineInteractions');

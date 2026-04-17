@@ -1,16 +1,34 @@
-# React + Vite
+# KeenKeeper
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A personal relationship management app to track and nurture meaningful connections with friends.
 
-Currently, two official plugins are available:
+## Technologies Used
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **React** - Frontend framework for building user interfaces
+- **Vite** - Fast build tool and development server
+- **Tailwind CSS** - Utility-first CSS framework for styling
+- **React Router** - Client-side routing for navigation
+- **Recharts** - Chart library for data visualization
+- **Axios** - HTTP client for API requests
 
-## React Compiler
+## Key Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Friend Management** - View and organize your friends with status tracking
+- **Timeline Tracking** - Record interactions and check-ins with friends
+- **Statistics Dashboard** - Visual charts showing relationship insights
 
-## Expanding the ESLint configuration
+## Error Page
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Custom 404 error page that handles invalid routes. Shows a friendly message and redirects users back to home.
+
+## Local Storage
+
+Timeline interactions are saved in browser's local storage. Data persists between sessions but clears when browser storage is manually cleared.
+
+## Browser Reloads
+
+Browser reload clears all timeline data. Local storage is cleared on app initialization for fresh sessions.
+
+## React Router
+
+Uses React Router for navigation between pages. Includes routes for home, user details, timeline, and stats with automatic scroll-to-top.

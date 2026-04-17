@@ -1,5 +1,5 @@
 import React from 'react'
-import { useContext, useState } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import { TimelineContext } from './TimelineContext'
 import TimelineCard from './TimelineCard'
 import TimelineFilter from './TimelineFilter'
@@ -7,6 +7,10 @@ import TimelineFilter from './TimelineFilter'
 function TimelineTree() {
   const { interactions } = useContext(TimelineContext)
   const [filter, setFilter] = useState('All')
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   
   const filteredInteractions = filter === 'All' 

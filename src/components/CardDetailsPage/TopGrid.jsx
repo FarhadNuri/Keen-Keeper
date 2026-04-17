@@ -1,7 +1,6 @@
 import React from 'react'
 
 function TopGrid({ user }) {
-  // Format date to "Feb 27, 2026" format
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', { 

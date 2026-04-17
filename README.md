@@ -23,11 +23,16 @@ Custom 404 error page that handles invalid routes. Shows a friendly message and 
 
 ## Local Storage
 
-Timeline interactions are saved in browser's local storage. Data persists between sessions but clears when browser storage is manually cleared.
+Timeline interactions are written to browser local storage during app use. The app clears this storage on initialization, so reload starts with fresh timeline and chart state.
 
 ## Browser Reloads
 
-Browser reload clears all timeline data. Local storage is cleared on app initialization for fresh sessions.
+Reloading the browser on any page (including a user details page) keeps you on the same route. Timeline interaction storage is reset on app initialization, so timeline and chart data both start fresh after reload.
+
+## Timeline Behavior
+
+- Filter timeline by interaction type: All, Call, Text, Video
+- New check-ins are inserted at the top immediately so the latest interaction is visible first
 
 ## React Router
 

@@ -1,11 +1,12 @@
-import React from 'react'
+import { Suspense } from 'react'
 import HomeBanner from './HomeBanner'
+import HomeLoading from './HomeLoading'
 
 function Home() {
   return (
-    <div>
+    <Suspense fallback={<HomeLoading />}>
       <HomeBanner />
-    </div>
+    </Suspense>
   )
 }
 

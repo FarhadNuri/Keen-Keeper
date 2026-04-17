@@ -14,7 +14,7 @@ function TimelineFilter({ filter, setFilter }) {
           <button
             key={filterOption}
             onClick={() => setFilter(filterOption)}
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+            className={`cursor-pointer px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
               filter === filterOption
                 ? 'bg-[#244D3F] text-white'
                 : 'bg-slate-100 text-slate-700 hover:bg-slate-200'

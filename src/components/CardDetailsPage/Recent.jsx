@@ -1,7 +1,7 @@
 import React from 'react'
 
 function Recent() {
-  // Sample recent interactions
+
   const interactions = [
     { type: 'Text', description: 'Asked for career advice', date: 'Jan 28, 2026' },
     { type: 'Meetup', description: 'Industry conference meetup', date: 'Jan 28, 2026' },

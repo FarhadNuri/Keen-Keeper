@@ -44,7 +44,7 @@ function HomeCard() {
       <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {users.map((user) => (
           <Link to={`/user/${user.id}`} key={user.id}>
-            <article className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+            <article className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 cursor-pointer">
               <div className="flex flex-col items-center text-center">
                 <img
                   src={user.picture}

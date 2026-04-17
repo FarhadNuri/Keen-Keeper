@@ -1,19 +1,45 @@
-import React, { use } from "react";
+import { use, useContext, useState, useEffect } from "react";
 import { DataContext } from "./HomeDataContext";
+import { TimelineContext } from "../Timeline/TimelineContext";
 
 function HomeBannerGrid() {
   const userData = use(DataContext);
+  const { interactions } = useContext(TimelineContext);
+  const [interactionCount, setInteractionCount] = useState(interactions.length);
+
+  // Update interaction count when interactions change
+  useEffect(() => {
+    setInteractionCount(interactions.length);
+  }, [interactions]);
+
+  // Also listen for custom event
+  useEffect(() => {
+    const updateCount = () => {
+      const savedInteractions = localStorage.getItem('timelineInteractions');
+      if (savedInteractions) {
+        const data = JSON.parse(savedInteractions);
+        setInteractionCount(data.length);
+      } else {
+        setInteractionCount(0);
+      }
+    };
+
+    window.addEventListener('interactionsUpdated', updateCount);
+    
+    return () => {
+      window.removeEventListener('interactionsUpdated', updateCount);
+    };
+  }, []);
 
   const countOnTrack = userData.filter((user) => user?.status === "on_track").length;
   const needAttention = userData.filter((user) => user?.status === "overdue").length;
   const totalFriends = userData.length;
-  const interactionsThisMonth = userData.length;
 
   const stats = [
     { value: totalFriends, label: "Total Friends" },
     { value: countOnTrack, label: "On Track" },
     { value: needAttention, label: "Need Attention" },
-    { value: interactionsThisMonth, label: "Interactions This Month" },
+    { value: interactionCount, label: "Interactions This Month" },
   ];
 
   return (

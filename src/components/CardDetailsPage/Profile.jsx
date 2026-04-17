@@ -17,7 +17,7 @@ function getStatusClass(status) {
 function Profile({ user }) {
   return (
     <div className="bg-white rounded-lg border border-slate-200 p-6">
-      {/* Profile Picture and Name */}
+      
       <div className="flex flex-col items-center text-center">
         <img
           src={user.picture}
@@ -26,12 +26,12 @@ function Profile({ user }) {
         />
         <h2 className="mt-4 text-2xl font-bold text-slate-800">{user.name}</h2>
         
-        {/* Status Badge */}
+        
         <span className={`mt-3 rounded-full px-3 py-1 text-xs font-semibold ${getStatusClass(user.status)}`}>
           {getStatusText(user.status)}
         </span>
         
-        {/* Tags */}
+        
         <div className="mt-4 flex flex-wrap justify-center gap-2">
           {user.tags.map((tag) => (
             <span
@@ -43,24 +43,24 @@ function Profile({ user }) {
           ))}
         </div>
         
-        {/* Bio */}
+        
         <p className="mt-4 text-sm text-slate-600 italic">"{user.bio}"</p>
         <p className="mt-2 text-xs text-slate-500">{user.email}</p>
       </div>
       
-      {/* Action Buttons */}
+      
       <div className="mt-6 space-y-3">
-        <button className="w-full flex items-center justify-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 py-2 px-4 rounded-lg transition-colors">
+        <button className="cursor-pointer w-full flex items-center justify-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 py-2 px-4 rounded-lg transition-colors">
           <span>⏰</span>
           <span>Snooze 2 Weeks</span>
         </button>
         
-        <button className="w-full flex items-center justify-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 py-2 px-4 rounded-lg transition-colors">
+        <button className="cursor-pointer w-full flex items-center justify-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 py-2 px-4 rounded-lg transition-colors">
           <span>📦</span>
           <span>Archive</span>
         </button>
         
-        <button className="w-full flex items-center justify-center gap-2 bg-red-50 hover:bg-red-100 text-red-600 py-2 px-4 rounded-lg transition-colors">
+        <button className="cursor-pointer w-full flex items-center justify-center gap-2 bg-red-50 hover:bg-red-100 text-red-600 py-2 px-4 rounded-lg transition-colors">
           <span>🗑️</span>
           <span>Delete</span>
         </button>

@@ -10,7 +10,6 @@ import axios from 'axios'
 const userPromise = axios.get("userData.json")
 
 function Root() {
-  // Clear localStorage on page refresh
   useEffect(() => {
     localStorage.removeItem('timelineInteractions')
   }, [])

@@ -23,7 +23,6 @@ function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
 
-  // Check if the current path matches the nav item path
   const isActive = (path) => {
     if (path === "/") {
       return location.pathname === "/";

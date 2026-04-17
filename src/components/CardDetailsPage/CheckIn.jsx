@@ -14,7 +14,6 @@ function CheckIn() {
   const [toastMessage, setToastMessage] = useState('')
 
   const handleCheckIn = (type) => {
-    // Create new interaction
     const newInteraction = {
       id: Date.now(),
       type: type,
@@ -26,14 +25,11 @@ function CheckIn() {
       })
     }
     
-    // Add to timeline
     addInteraction(newInteraction)
     
-    // Show toast
     setToastMessage(`${type} interaction added!`)
     setShowToast(true)
     
-    // Hide toast after 3 seconds
     setTimeout(() => {
       setShowToast(false)
     }, 3000)
@@ -44,35 +40,31 @@ function CheckIn() {
       <h3 className="text-lg font-semibold text-slate-800 mb-4">Quick Check-In</h3>
       
       <div className="grid grid-cols-3 gap-4">
-        {/* Call */}
         <button 
           onClick={() => handleCheckIn('Call')}
-          className="flex flex-col items-center justify-center p-4 bg-slate-50 hover:bg-slate-100 rounded-lg transition-colors"
+          className="cursor-pointer flex flex-col items-center justify-center p-4 bg-slate-50 hover:bg-slate-100 rounded-lg transition-colors"
         >
           <i className="fa-solid fa-phone-volume text-3xl mb-2 text-slate-600"></i>
           <span className="text-sm text-slate-700">Call</span>
         </button>
-        
-        {/* Text */}
+
         <button 
           onClick={() => handleCheckIn('Text')}
-          className="flex flex-col items-center justify-center p-4 bg-slate-50 hover:bg-slate-100 rounded-lg transition-colors"
+          className="cursor-pointer flex flex-col items-center justify-center p-4 bg-slate-50 hover:bg-slate-100 rounded-lg transition-colors"
         >
           <i className="fa-regular fa-comment-dots text-3xl mb-2 text-slate-600"></i>
           <span className="text-sm text-slate-700">Text</span>
         </button>
-        
-        {/* Video */}
+
         <button 
           onClick={() => handleCheckIn('Video')}
-          className="flex flex-col items-center justify-center p-4 bg-slate-50 hover:bg-slate-100 rounded-lg transition-colors"
+          className="cursor-pointer flex flex-col items-center justify-center p-4 bg-slate-50 hover:bg-slate-100 rounded-lg transition-colors"
         >
           <i className="fa-solid fa-video text-3xl mb-2 text-slate-600"></i>
           <span className="text-sm text-slate-700">Video</span>
         </button>
       </div>
-      
-      {/* Toast Notification - Fixed Top Right */}
+
       {showToast && (
         <div className="fixed top-4 right-4 z-50 bg-green-500 text-white px-6 py-4 rounded-lg shadow-lg flex items-center gap-3 animate-slide-in">
           <i className="fa-solid fa-circle-check text-xl"></i>
